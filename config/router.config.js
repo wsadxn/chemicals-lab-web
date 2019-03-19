@@ -19,83 +19,21 @@ export default [
     path: '/',
     component: '../layouts/BasicLayout',
     Routes: ['src/pages/Authorized'],
-    authority: [ '0', '1', '2', '3' ],
+    authority: ['0', '1', '2', '3'],
     routes: [
-      // dashboard
-      { path: '/', redirect: '/dashboard/analysis' },
+      // inform
+      { path: '/', redirect: '/index' },
       {
-        path: '/dashboard',
-        name: 'dashboard',
-        icon: 'dashboard',
-        routes: [
-          {
-            path: '/dashboard/analysis',
-            name: 'analysis',
-            component: './Dashboard/Analysis',
-          },
-          {
-            path: '/dashboard/monitor',
-            name: 'monitor',
-            component: './Dashboard/Monitor',
-          },
-          {
-            path: '/dashboard/workplace',
-            name: 'workplace',
-            component: './Dashboard/Workplace',
-          },
-        ],
+        path: '/index',
+        name: '首页',
+        icon: 'desktop',
+        component: './Inform/IndexInform',
       },
       {
-        name: 'exception',
-        icon: 'warning',
-        path: '/exception',
-        hideInMenu: true,
-        routes: [
-          // exception
-          {
-            path: '/exception/403',
-            name: 'not-permission',
-            component: './Exception/403',
-          },
-          {
-            path: '/exception/404',
-            name: 'not-find',
-            component: './Exception/404',
-          },
-          {
-            path: '/exception/500',
-            name: 'server-error',
-            component: './Exception/500',
-          },
-          {
-            path: '/exception/trigger',
-            name: 'trigger',
-            hideInMenu: true,
-            component: './Exception/TriggerException',
-          },
-        ],
-      },
-      {
-        name: '个人中心',
-        icon: 'user',
-        path: '/account',
-        routes: [
-          {
-            path: '/account/notice',
-            name: '消息通知',
-            component: './Account/Notice/Notice',
-          },
-          {
-            path: '/account/user-info',
-            name: '个人信息',
-            component: './Account/UserInfo',
-          },
-          {
-            path: '/account/user-pwd',
-            name: '修改密码',
-            component: './Account/UserPwd',
-          },         
-        ],
+        path: '/inform',
+        name: '公告',
+        icon: 'audit',
+        component: './Inform/Inform',
       },
       {
         name: '实验室用品',
@@ -112,7 +50,7 @@ export default [
             name: '仪器设备',
             component: './Supplies/Instrument/Instrument',
           },
-        ]
+        ],
       },
       {
         name: '用品预约',
@@ -161,7 +99,7 @@ export default [
             name: '申请列表',
             component: './Order/OrderList/OrderList/OrderList',
           },
-        ]
+        ],
       },
       {
         path: '/purchase',
@@ -203,33 +141,61 @@ export default [
         ],
       },
       {
-        name: '管理',
-        icon: 'audit',
-        path: '/manage',
+        name: '用户信息',
+        icon: 'user',
+        path: '/account',
         routes: [
           {
-            path: '/manage/users',
+            path: '/account/notice',
+            name: '消息通知',
+            component: './Account/Notice/Notice',
+          },
+          {
+            path: '/account/user-manage',
             name: '用户管理',
             component: './UserManage/UserManage',
           },
-        ]
+          {
+            path: '/account/user-info',
+            name: '个人信息',
+            component: './Account/UserInfo',
+          },
+          {
+            path: '/account/user-pwd',
+            name: '修改密码',
+            component: './Account/UserPwd',
+          },
+        ],
       },
       {
-        name: '公告',
-        icon: 'audit',
-        path: '/inform',
+        name: 'exception',
+        icon: 'warning',
+        path: '/exception',
+        hideInMenu: true,
         routes: [
+          // exception
           {
-            path: '/inform/all',
-            name: '公告列表',
-            component: './Inform/Inform',
+            path: '/exception/403',
+            name: 'not-permission',
+            component: './Exception/403',
           },
           {
-            path: '/inform/latest',
-            name: '首页',
-            component: './Inform/IndexInform',
+            path: '/exception/404',
+            name: 'not-find',
+            component: './Exception/404',
           },
-        ]
+          {
+            path: '/exception/500',
+            name: 'server-error',
+            component: './Exception/500',
+          },
+          {
+            path: '/exception/trigger',
+            name: 'trigger',
+            hideInMenu: true,
+            component: './Exception/TriggerException',
+          },
+        ],
       },
       {
         component: '404',

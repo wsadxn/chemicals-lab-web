@@ -247,6 +247,10 @@ export async function queryInform(params) {
   return request(`/server/api/inform/query?${stringify(params)}`);
 }
 
+export async function getMonthNum(){
+  return request(`/server/api/inform/getMonthNum`);
+}
+
 export async function deleteInform(params) {
   return request(`/server/api/inform/delete?id=${params}`);
 }

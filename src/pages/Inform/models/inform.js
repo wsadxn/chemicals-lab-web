@@ -1,4 +1,4 @@
-import { queryInform, deleteInform, updateInform } from '@/services/api';
+import { queryInform, deleteInform, updateInform, getMonthNum } from '@/services/api';
 import { pagination, formatObj } from '@/utils/utils';
 
 const searchData = pagination({
@@ -21,6 +21,7 @@ export default {
       list: [],
       pagination: {},
     },
+    monthNum: {},
     searchData,
     formData,
     visible: false,
@@ -47,6 +48,13 @@ export default {
       const response = yield call(deleteInform, payload);
       return response;
     },
+    *getMonthNum(_, { call, put }) {
+      const response = yield call(getMonthNum);
+      yield put({
+        type: 'saveMonthNum',
+        payload: response.data,
+      });
+    },
   },
 
   reducers: {
@@ -61,6 +69,12 @@ export default {
             current: parseInt(action.payload.pageNum, 10),
           },
         },
+      };
+    },
+    saveMonthNum(state, action) {
+      return {
+        ...state,
+        monthNum: action.payload,
       };
     },
     changeSearchFormFields(state, { payload }) {
