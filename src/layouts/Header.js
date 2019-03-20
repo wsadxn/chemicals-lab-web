@@ -56,16 +56,16 @@ class HeaderView extends Component {
 
   handleMenuClick = ({ key }) => {
     const { dispatch } = this.props;
-    if (key === 'userCenter') {
-      router.push('/account/center');
-      return;
-    }
-    if (key === 'triggerError') {
-      router.push('/exception/trigger');
+    if (key === 'notice') {
+      router.push('/account/notice');
       return;
     }
     if (key === 'userinfo') {
-      router.push('/account/settings/base');
+      router.push('/account/user-info');
+      return;
+    }
+    if (key === 'userpwd') {
+      router.push('/account/user-pwd');
       return;
     }
     if (key === 'logout') {

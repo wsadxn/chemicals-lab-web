@@ -11,7 +11,7 @@ const FormItem = Form.Item;
 }))
 @Form.create()
 class UserInfo extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.setUserInfo();
   }
 
@@ -19,7 +19,7 @@ class UserInfo extends Component {
     const { currentUser, form } = this.props;
     Object.keys(form.getFieldsValue()).forEach(key => {
       const obj = {};
-      obj[key] = currentUser[key] + '' || '';
+      obj[key] = currentUser[key] || '';
       form.setFieldsValue(obj);
     });
   };
@@ -57,6 +57,7 @@ class UserInfo extends Component {
   render() {
     const {
       form: { getFieldDecorator, getFieldValue },
+      currentUser,
     } = this.props;
 
     const formItemLayout = {
@@ -79,62 +80,73 @@ class UserInfo extends Component {
     };
 
     return (
-        <Card title="个人信息" bordered={false}>
-          <Form onSubmit={this.handleSubmit} hideRequiredMark style={{ marginTop: 8 }}>
-            <FormItem {...formItemLayout} label="权限">
-              {getFieldDecorator('identity')(
-                <Select style={{ width: 220 }} disabled>
-                  <Option value="0">学生</Option>
-                  <Option value="1">教师</Option>
-                  <Option value="2">管理员</Option>
-                  <Option value="3">主管</Option>
-                </Select>
-              )}
-            </FormItem>
-            <FormItem {...formItemLayout} label="账号">
-              {getFieldDecorator('id')(<Input style={{ width: 220 }} disabled />)}
-            </FormItem>
-            <FormItem {...formItemLayout} label="用户名">
-              {getFieldDecorator('name', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入用户名',
-                  },
-                ],
-              })(<Input style={{ width: 220 }} />)}
-            </FormItem>
-            <FormItem {...formItemLayout} label="联系电话">
-              {getFieldDecorator('tel', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入联系电话',
-                  },
-                ],
-              })(<Input style={{ width: 220 }} />)}
-            </FormItem>
-            <FormItem {...formItemLayout} label="邮箱地址">
-              {getFieldDecorator('email', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入邮箱地址',
-                  },
-                ],
-              })(<Input style={{ width: 220 }} />)}
-            </FormItem>
+      <Card title="个人信息" bordered={false}>
+        <Form onSubmit={this.handleSubmit} style={{ marginTop: 8 }}>
+          <FormItem {...formItemLayout} label="权限">
+            {getFieldDecorator('identity', {
+              initialValue: currentUser.identity,
+            })(
+              <Select style={{ width: 220 }} disabled>
+                <Option value="0">学生</Option>
+                <Option value="1">教师</Option>
+                <Option value="2">管理员</Option>
+                <Option value="3">主管</Option>
+              </Select>
+            )}
+          </FormItem>
+          <FormItem {...formItemLayout} label="账号">
+            {getFieldDecorator('id', { initialValue: currentUser.id })(
+              <Input style={{ width: 220 }} disabled />
+            )}
+          </FormItem>
+          <FormItem {...formItemLayout} label="用户名">
+            {getFieldDecorator('name', {
+              rules: [
+                {
+                  required: true,
+                  message: '请输入用户名',
+                },
+              ],
+              initialValue: currentUser.name,
+            })(<Input style={{ width: 220 }} />)}
+          </FormItem>
+          <FormItem {...formItemLayout} label="联系电话">
+            {getFieldDecorator('tel', {
+              rules: [
+                {
+                  required: true,
+                  message: '请输入联系电话',
+                },
+              ],
+              initialValue: currentUser.tel,
+            })(<Input style={{ width: 220 }} />)}
+          </FormItem>
+          <FormItem {...formItemLayout} label="邮箱地址">
+            {getFieldDecorator('email', {
+              rules: [
+                {
+                  type: 'email',
+                  message: '请输入正确的邮箱地址',
+                },
+                {
+                  required: true,
+                  message: '请输入邮箱地址',
+                },
+              ],
+              initialValue: currentUser.email,
+            })(<Input style={{ width: 220 }} />)}
+          </FormItem>
 
-            <FormItem {...submitFormLayout} style={{ marginTop: 32 }}>
-              <Button type="primary" htmlType="submit">
-                提交
-              </Button>
-              <Button style={{ marginLeft: 8 }} type="primary" onClick={this.setUserInfo}>
-                取消
-              </Button>
-            </FormItem>
-          </Form>
-        </Card>
+          <FormItem {...submitFormLayout} style={{ marginTop: 32 }}>
+            <Button type="primary" htmlType="submit">
+              提交
+            </Button>
+            <Button style={{ marginLeft: 8 }} type="primary" onClick={this.setUserInfo}>
+              取消
+            </Button>
+          </FormItem>
+        </Form>
+      </Card>
     );
   }
 }

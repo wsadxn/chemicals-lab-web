@@ -47,20 +47,22 @@ export default class CPList extends PureComponent {
   };
 
   componentWillMount() {
-    this.props.dispatch({
+    const { location, dispatch } = this.props;
+    dispatch({
       type: 'cplist/changeSearchFormFields',
       payload: {
+        id: location.query.id || '',
         state: stateObj[this.state.menuVal],
       },
     });
-    this.props.dispatch({
+    dispatch({
       type: 'cplist/fetch',
     });
-    this.props.dispatch({
+    dispatch({
       type: 'user/getUserSd',
       payload: '23',
     });
-    this.props.dispatch({
+    dispatch({
       type: 'chemicals/getChemicalSd',
     });
   }
@@ -79,6 +81,7 @@ export default class CPList extends PureComponent {
     dispatch({
       type: 'cplist/changeSearchFormFields',
       payload: {
+        id: '',
         state: stateObj[e.target.value],
       },
     });

@@ -9,6 +9,7 @@ import {
 } from '@/utils/utils';
 
 const searchData = pagination({
+  id:'',
   itemId: [],  // 药品id
   applicantId: [],  // 申请人id
   urgency: [],  // 紧急度

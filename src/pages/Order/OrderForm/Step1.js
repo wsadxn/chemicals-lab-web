@@ -48,7 +48,7 @@ class Step1 extends React.PureComponent {
     };
     return (
       <Fragment>
-        <Form layout="horizontal" className={styles.stepForm} hideRequiredMark>
+        <Form layout="horizontal" className={styles.stepForm}>
           <Form.Item {...formItemLayout} label="使用日期">
             {getFieldDecorator('orderDate', {
               rules: [{ required: true, message: '请选择使用日期' }],

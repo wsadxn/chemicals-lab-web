@@ -20,7 +20,7 @@ export default class IPListSearch extends PureComponent {
       if (!err) {
         dispatch({
           type: 'iplist/changeSearchFormFields',
-          payload: values,
+          payload: { ...values, id: '' },
         });
         this.doPageSearch();
       }

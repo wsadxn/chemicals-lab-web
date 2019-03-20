@@ -125,7 +125,7 @@ class Step2 extends React.PureComponent {
 
     return (
       <Fragment>
-        <Form layout="horizontal" className={styles.stepForm} hideRequiredMark>
+        <Form layout="horizontal" className={styles.stepForm}>
           {formItems()}
           <Form.Item
             wrapperCol={{

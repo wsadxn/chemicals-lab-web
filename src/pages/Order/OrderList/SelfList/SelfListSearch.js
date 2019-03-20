@@ -20,6 +20,7 @@ export default class SelfListSearch extends PureComponent {
         dispatch({
           type: 'order/changeSearchFormFields',
           payload: {
+            id: '',
             state: values.state,
             orderDate: values.orderDate
               ? [values.orderDate[0].format('YYYY-MM-DD'), values.orderDate[1].format('YYYY-MM-DD')]

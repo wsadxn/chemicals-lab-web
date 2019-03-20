@@ -56,6 +56,7 @@ export default [
         name: '用品预约',
         icon: 'form',
         path: '/order',
+        authority: ['1', '2', '3'],
         routes: [
           {
             path: '/order/form',
@@ -97,6 +98,7 @@ export default [
           {
             path: '/order/orderlist',
             name: '申请列表',
+            authority: ['2', '3'],
             component: './Order/OrderList/OrderList/OrderList',
           },
         ],
@@ -105,6 +107,7 @@ export default [
         path: '/purchase',
         icon: 'profile',
         name: '库存管理',
+        authority: ['2', '3'],
         routes: [
           {
             path: '/purchase/chemicals',
@@ -153,6 +156,7 @@ export default [
           {
             path: '/account/user-manage',
             name: '用户管理',
+            authority: ['3'],
             component: './UserManage/UserManage',
           },
           {

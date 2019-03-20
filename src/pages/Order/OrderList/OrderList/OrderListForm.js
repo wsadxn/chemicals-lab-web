@@ -157,7 +157,7 @@ export default class OrderListForm extends Component {
           onCancel={this.handleCancel}
           width={700}
         >
-          <Form hideRequiredMark style={{ marginTop: 8 }}>
+          <Form style={{ marginTop: 8 }}>
             {listFormData.record.itemsId
               ? listFormData.record.itemsId.chemicals.map((value, index) => {
                   return (
@@ -247,7 +247,7 @@ export default class OrderListForm extends Component {
           onCancel={this.handleCancel}
           width={700}
         >
-          <Form hideRequiredMark style={{ marginTop: 8 }}>
+          <Form style={{ marginTop: 8 }}>
             <Row>
               <Col md={12} sm={24}>
                 <FormItem {...formItemLayout} label="审核结果">
@@ -284,7 +284,7 @@ export default class OrderListForm extends Component {
           onCancel={this.handleCancel}
           width={700}
         >
-          <Form hideRequiredMark>
+          <Form>
             {listFormData.record.itemsId
               ? listFormData.record.itemsId.chemicals.map((value, index) => {
                   const orderNum = listFormData.record.itemsNum.chemicals[index];

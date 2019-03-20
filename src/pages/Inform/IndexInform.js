@@ -92,7 +92,7 @@ class IndexInform extends Component {
 
     return (
       <Row gutter={24}>
-        <Col md={16} sm={24}>
+        <Col md={16} sm={24} style={{ marginBottom: 24 }}>
           <Card
             bodyStyle={{ padding: 0 }}
             bordered={false}

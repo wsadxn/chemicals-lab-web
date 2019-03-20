@@ -47,20 +47,22 @@ export default class IPList extends PureComponent {
   };
 
   componentWillMount() {
-    this.props.dispatch({
+    const { location, dispatch } = this.props;
+    dispatch({
       type: 'iplist/changeSearchFormFields',
       payload: {
+        id: location.query.id || '',
         state: stateObj[this.state.menuVal],
       },
     });
-    this.props.dispatch({
+    dispatch({
       type: 'iplist/fetch',
     });
-    this.props.dispatch({
+    dispatch({
       type: 'user/getUserSd',
       payload: '23',
     });
-    this.props.dispatch({
+    dispatch({
       type: 'instrument/getInstrumentSd',
     });
   }
@@ -79,6 +81,7 @@ export default class IPList extends PureComponent {
     dispatch({
       type: 'iplist/changeSearchFormFields',
       payload: {
+        id: '',
         state: stateObj[e.target.value],
       },
     });

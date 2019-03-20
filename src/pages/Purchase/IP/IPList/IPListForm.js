@@ -144,7 +144,7 @@ export default class IPListForm extends Component {
           onCancel={this.handleCancel}
           width={700}
         >
-          <Form hideRequiredMark style={{ marginTop: 8 }}>
+          <Form style={{ marginTop: 8 }}>
             <Row>
               <Col md={12} sm={24}>
                 <FormItem {...formItemLayout} label="仪器名称">
@@ -179,7 +179,7 @@ export default class IPListForm extends Component {
           onCancel={this.handleCancel}
           width={700}
         >
-          <Form hideRequiredMark style={{ marginTop: 8 }}>
+          <Form style={{ marginTop: 8 }}>
             <Row>
               <Col md={12} sm={24}>
                 <FormItem {...formItemLayout} label="仪器名称">
@@ -223,7 +223,7 @@ export default class IPListForm extends Component {
           onCancel={this.handleCancel}
           width={700}
         >
-          <Form hideRequiredMark style={{ marginTop: 8 }}>
+          <Form style={{ marginTop: 8 }}>
             <Row>
               <Col md={12} sm={24}>
                 <FormItem {...formItemLayout} label="仪器名称">

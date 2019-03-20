@@ -1,22 +1,18 @@
-import {
-  queryPurchase,
-  updatePurchase,
-} from '@/services/api';
-import {
-  pagination, formatObj,
-} from '@/utils/utils';
+import { queryPurchase, updatePurchase } from '@/services/api';
+import { pagination, formatObj } from '@/utils/utils';
 
 const searchData = pagination({
-  itemId: [],  // 仪器id
-  applicantId: [],  // 申请人id
-  urgency: [],  // 紧急度
+  id: '',
+  itemId: [], // 仪器id
+  applicantId: [], // 申请人id
+  urgency: [], // 紧急度
   state: '', // 状态
 });
 
 const formData = {
-  id: '',  // 采购记录id
+  id: '', // 采购记录id
   itemId: '', // 物品id
-  operation: '',  // 操作类别
+  operation: '', // 操作类别
   currentUser: '', // 操作人id
 };
 
@@ -28,18 +24,21 @@ export default {
       list: [],
       pagination: {},
     },
-    searchData,  
+    searchData,
     formData,
     visible: false,
   },
 
   effects: {
-    *fetch(_, { call, put, select}) {
+    *fetch(_, { call, put, select }) {
       const params = yield select(state => state.iplist.searchData);
-      const response = yield call(queryPurchase, formatObj({
-        ...params,
-        type: 1,
-      }));
+      const response = yield call(
+        queryPurchase,
+        formatObj({
+          ...params,
+          type: 1,
+        })
+      );
       yield put({
         type: 'save',
         payload: response.data,
@@ -60,8 +59,8 @@ export default {
           pagination: {
             total: action.payload.total,
             pageSize: action.payload.pageSize,
-            current: parseInt(action.payload.pageNum,10),
-          }
+            current: parseInt(action.payload.pageNum, 10),
+          },
         },
       };
     },

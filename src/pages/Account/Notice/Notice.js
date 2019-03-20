@@ -193,7 +193,46 @@ export default class Notice extends PureComponent {
                 <span>
                   <Divider type="vertical" />
                   <Tooltip title="前往">
-                    <Link to={`/order/orderlist?id=${record.targetId}&state=apply`}>
+                    <Link to={`/order/orderlist?id=${record.targetId}`}>
+                      <Icon
+                        type="arrow-right"
+                        style={{ fontSize: 20, color: '#3c7a1f', cursor: 'pointer' }}
+                      />
+                    </Link>
+                  </Tooltip>
+                </span>
+              ) : null}
+              {record.type == 2 || record.type == 3 || record.type == 4 ? (
+                <span>
+                  <Divider type="vertical" />
+                  <Tooltip title="前往">
+                    <Link to={`/order/selflist?id=${record.targetId}`}>
+                      <Icon
+                        type="arrow-right"
+                        style={{ fontSize: 20, color: '#3c7a1f', cursor: 'pointer' }}
+                      />
+                    </Link>
+                  </Tooltip>
+                </span>
+              ) : null}
+              {record.type == 5 || record.type == 7 || record.type == 8 ? (
+                <span>
+                  <Divider type="vertical" />
+                  <Tooltip title="前往">
+                    <Link to={`/purchase/${record.targetId.split(',')[0]==0?'chemicals':'instrument'}/list?id=${record.targetId.split(',')[1]}`}>
+                      <Icon
+                        type="arrow-right"
+                        style={{ fontSize: 20, color: '#3c7a1f', cursor: 'pointer' }}
+                      />
+                    </Link>
+                  </Tooltip>
+                </span>
+              ) : null}
+              {record.type == 9 ? (
+                <span>
+                  <Divider type="vertical" />
+                  <Tooltip title="前往">
+                    <Link to={`/account/user-info`}>
                       <Icon
                         type="arrow-right"
                         style={{ fontSize: 20, color: '#3c7a1f', cursor: 'pointer' }}

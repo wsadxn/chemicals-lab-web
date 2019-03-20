@@ -3,6 +3,7 @@ import { addOrder, queryOrder, updateOrder, getUnusedInsNum } from '@/services/a
 import { pagination, formatObj } from '@/utils/utils';
 
 const searchData = pagination({
+  id: '',
   applicantId: [], // 申请人id
   orderDate: [], // 使用时间
   submitTime: [], // 申请时间

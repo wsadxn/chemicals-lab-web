@@ -45,13 +45,15 @@ export default class OrderList extends PureComponent {
   };
 
   componentWillMount() {
-    this.props.dispatch({
+    const { location, dispatch } = this.props;
+    dispatch({
       type: 'order/changeSearchFormFields',
       payload: {
+        id: location.query.id || '',
         state: stateObj[this.state.menuVal],
       },
     });
-    this.props.dispatch({
+    dispatch({
       type: 'order/fetch',
     });
   }
@@ -70,6 +72,7 @@ export default class OrderList extends PureComponent {
     dispatch({
       type: 'order/changeSearchFormFields',
       payload: {
+        id: '',
         state: stateObj[e.target.value],
       },
     });

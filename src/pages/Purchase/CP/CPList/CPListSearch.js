@@ -20,7 +20,7 @@ export default class CPListSearch extends PureComponent {
       if (!err) {
         dispatch({
           type: 'cplist/changeSearchFormFields',
-          payload: values,
+          payload: { ...values, id: '' },
         });
         this.doPageSearch();
       }

@@ -70,7 +70,7 @@ export default class InformForm extends Component {
         width={700}
         centered
       >
-        <Form hideRequiredMark style={{ marginTop: 8 }}>
+        <Form style={{ marginTop: 8 }}>
           <Row>
             <Col sm={24}>
               <FormItem {...formItemLayout} label="标题">

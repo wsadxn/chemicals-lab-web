@@ -26,10 +26,11 @@ const time = ['第一大节', '第二大节', '第三大节', '第四大节'];
 }))
 export default class SelfList extends PureComponent {
   componentWillMount() {
-    const { currentUser, dispatch } = this.props;
+    const { currentUser, dispatch, location } = this.props;
     dispatch({
       type: 'order/changeSearchFormFields',
       payload: {
+        id: location.query.id || '',
         applicantId: currentUser.id,
       },
     });
