@@ -8,10 +8,10 @@ const { Option } = Select;
 
 const formItemLayout = {
   labelCol: {
-    span: 5,
+    span: 6,
   },
   wrapperCol: {
-    span: 19,
+    span: 16,
   },
 };
 
@@ -82,7 +82,7 @@ class Step2 extends React.PureComponent {
       for (let i = 0; i < formData.chemicalsNum; i++) {
         arr.push(
           <Row>
-            <Col md={15} sm={24}>
+            <Col md={14} sm={24}>
               <Form.Item {...formItemLayout} label="药品名称">
                 {getFieldDecorator(`itemsId[${i}]`, {
                   initialValue: formData.itemsId.chemicals[i] ? formData.itemsId.chemicals[i] : [],
@@ -90,7 +90,7 @@ class Step2 extends React.PureComponent {
                   <Select
                     showSearch
                     placeholder="请选择"
-                    style={{ width: 170 }}
+                    style={{ width: 160 }}
                     filterOption={(input, option) =>
                       option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                     }
@@ -107,14 +107,14 @@ class Step2 extends React.PureComponent {
                 )}
               </Form.Item>
             </Col>
-            <Col md={9} sm={24}>
+            <Col md={10} sm={24}>
               <Form.Item {...formItemLayout} label="数量">
                 {getFieldDecorator(`itemsNum[${i}]`, {
                   rules: [{ required: true, message: '请输入该药品数量' }],
                   initialValue: formData.itemsNum.chemicals[i]
                     ? formData.itemsNum.chemicals[i]
                     : '',
-                })(<InputNumber min={1} max={num[i]} style={{ width: 100 }} />)}
+                })(<InputNumber min={1} max={num[i]} style={{ width: 90 }} />)}
               </Form.Item>
             </Col>
           </Row>

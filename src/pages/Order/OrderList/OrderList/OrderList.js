@@ -257,24 +257,24 @@ export default class OrderList extends PureComponent {
         render: record => (
           <div>
             {optButton.detail(record)}
-            {record.state === 0 ? (
+            {record.state === 0 && (
               <span>
                 {optButton.divider()}
                 {optButton.adopt(record)}
               </span>
-            ) : null}
-            {record.state === 1 ? (
+            )}
+            {record.state === 1 && (
               <span>
                 {optButton.divider()}
                 {optButton.receive(record)}
               </span>
-            ) : null}
-            {record.state === 2 ? (
+            )}
+            {record.state === 2 && (
               <span>
                 {optButton.divider()}
                 {optButton.storage(record)}
               </span>
-            ) : null}
+            )}
           </div>
         ),
       },

@@ -165,7 +165,7 @@ export default class Notice extends PureComponent {
         render: record => {
           return (
             <div>
-              {record.state == 0 ? (
+              {record.state == 0 && (
                 <span>
                   <Tooltip title="标记已读">
                     <Icon
@@ -176,7 +176,7 @@ export default class Notice extends PureComponent {
                   </Tooltip>
                   <Divider type="vertical" />
                 </span>
-              ) : null}
+              )}
               <Tooltip title="删除">
                 <Popconfirm
                   placement="topRight"
@@ -189,7 +189,7 @@ export default class Notice extends PureComponent {
                   />
                 </Popconfirm>
               </Tooltip>
-              {record.type == 0 ? (
+              {record.type == 0 && (
                 <span>
                   <Divider type="vertical" />
                   <Tooltip title="前往">
@@ -201,8 +201,8 @@ export default class Notice extends PureComponent {
                     </Link>
                   </Tooltip>
                 </span>
-              ) : null}
-              {record.type == 2 || record.type == 3 || record.type == 4 ? (
+              )}
+              {(record.type == 2 || record.type == 3 || record.type == 4) && (
                 <span>
                   <Divider type="vertical" />
                   <Tooltip title="前往">
@@ -214,12 +214,16 @@ export default class Notice extends PureComponent {
                     </Link>
                   </Tooltip>
                 </span>
-              ) : null}
-              {record.type == 5 || record.type == 7 || record.type == 8 ? (
+              )}
+              {(record.type == 5 || record.type == 7 || record.type == 8) && (
                 <span>
                   <Divider type="vertical" />
                   <Tooltip title="前往">
-                    <Link to={`/purchase/${record.targetId.split(',')[0]==0?'chemicals':'instrument'}/list?id=${record.targetId.split(',')[1]}`}>
+                    <Link
+                      to={`/purchase/${
+                        record.targetId.split(',')[0] == 0 ? 'chemicals' : 'instrument'
+                      }/list?id=${record.targetId.split(',')[1]}`}
+                    >
                       <Icon
                         type="arrow-right"
                         style={{ fontSize: 20, color: '#3c7a1f', cursor: 'pointer' }}
@@ -227,8 +231,8 @@ export default class Notice extends PureComponent {
                     </Link>
                   </Tooltip>
                 </span>
-              ) : null}
-              {record.type == 9 ? (
+              )}
+              {record.type == 9 && (
                 <span>
                   <Divider type="vertical" />
                   <Tooltip title="前往">
@@ -240,7 +244,7 @@ export default class Notice extends PureComponent {
                     </Link>
                   </Tooltip>
                 </span>
-              ) : null}
+              )}
             </div>
           );
         },

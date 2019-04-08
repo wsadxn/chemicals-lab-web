@@ -100,50 +100,48 @@ export default class OrderInfo extends PureComponent {
               <span>入库时间：{record.storageTime || '暂无'}</span>
             </Col>
           </Row>
-          {record.itemsId
-            ? record.itemsId.chemicals.map((value, index) => {
-                const orderNum = record.itemsNum.chemicals[index];
-                const backNum = record.backNum ? record.backNum.chemicals[index] : '暂无';
-                return (
-                  <div>
-                    {index === 0 ? <Divider orientation="left">所借药品信息</Divider> : null}
-                    <Row style={{ marginBottom: 5 }}>
-                      <Col md={8} sm={24}>
-                        <span>药品名称：{chemicalSd[value]}</span>
-                      </Col>
-                      <Col md={8} sm={24}>
-                        <span>申请数量：{orderNum}</span>
-                      </Col>
-                      <Col md={8} sm={24}>
-                        <span>归还数量：{backNum}</span>
-                      </Col>
-                    </Row>
-                  </div>
-                );
-              })
-            : null}
-          {record.itemsId
-            ? record.itemsId.instrument.map((value, index) => {
-                const orderNum = record.itemsNum.instrument[index];
-                const backNum = record.backNum ? record.backNum.instrument[index] : '暂无';
-                return (
-                  <div>
-                    {index === 0 ? <Divider orientation="left">所借仪器信息</Divider> : null}
-                    <Row style={{ marginBottom: 5 }}>
-                      <Col md={8} sm={24}>
-                        <span>仪器名称：{instrumentSd[value]}</span>
-                      </Col>
-                      <Col md={8} sm={24}>
-                        <span>申请数量：{orderNum}</span>
-                      </Col>
-                      <Col md={8} sm={24}>
-                        <span>归还数量：{backNum}</span>
-                      </Col>
-                    </Row>
-                  </div>
-                );
-              })
-            : null}
+          {record.itemsId &&
+            record.itemsId.chemicals.map((value, index) => {
+              const orderNum = record.itemsNum.chemicals[index];
+              const backNum = record.backNum ? record.backNum.chemicals[index] : '暂无';
+              return (
+                <div>
+                  {index === 0 && <Divider orientation="left">所借药品信息</Divider>}
+                  <Row style={{ marginBottom: 5 }}>
+                    <Col md={8} sm={24}>
+                      <span>药品名称：{chemicalSd[value]}</span>
+                    </Col>
+                    <Col md={8} sm={24}>
+                      <span>申请数量：{orderNum}</span>
+                    </Col>
+                    <Col md={8} sm={24}>
+                      <span>归还数量：{backNum}</span>
+                    </Col>
+                  </Row>
+                </div>
+              );
+            })}
+          {record.itemsId &&
+            record.itemsId.instrument.map((value, index) => {
+              const orderNum = record.itemsNum.instrument[index];
+              const backNum = record.backNum ? record.backNum.instrument[index] : '暂无';
+              return (
+                <div>
+                  {index === 0 && <Divider orientation="left">所借仪器信息</Divider>}
+                  <Row style={{ marginBottom: 5 }}>
+                    <Col md={8} sm={24}>
+                      <span>仪器名称：{instrumentSd[value]}</span>
+                    </Col>
+                    <Col md={8} sm={24}>
+                      <span>申请数量：{orderNum}</span>
+                    </Col>
+                    <Col md={8} sm={24}>
+                      <span>归还数量：{backNum}</span>
+                    </Col>
+                  </Row>
+                </div>
+              );
+            })}
         </div>
       </Modal>
     );

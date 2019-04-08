@@ -184,17 +184,17 @@ export default class Instrument extends PureComponent {
       },
       {
         title: '操作',
-        render: record => {
-          if (currentUser.identity === '2' || currentUser.identity === '3') {
-            return (
-              <div>
-                <Tooltip title="查看">
-                  <Icon
-                    type="file-text"
-                    onClick={() => this.handleDetail(record)}
-                    style={{ fontSize: 20, color: '#108ee9', cursor: 'pointer' }}
-                  />
-                </Tooltip>
+        render: record => (
+          <div>
+            <Tooltip title="查看">
+              <Icon
+                type="file-text"
+                onClick={() => this.handleDetail(record)}
+                style={{ fontSize: 20, color: '#108ee9', cursor: 'pointer' }}
+              />
+            </Tooltip>
+            {(currentUser.identity === '2' || currentUser.identity === '3') && (
+              <span>
                 <Divider type="vertical" />
                 <Tooltip title="编辑">
                   <Icon
@@ -216,22 +216,10 @@ export default class Instrument extends PureComponent {
                     />
                   </Popconfirm>
                 </Tooltip>
-              </div>
-            );
-          } else {
-            return (
-              <div>
-                <Tooltip title="查看">
-                  <Icon
-                    type="file-text"
-                    onClick={() => this.handleDetail(record)}
-                    style={{ fontSize: 20, color: '#108ee9', cursor: 'pointer' }}
-                  />
-                </Tooltip>
-              </div>
-            );
-          }
-        },
+              </span>
+            )}
+          </div>
+        ),
       },
     ];
     const paginationProps = {
@@ -252,12 +240,10 @@ export default class Instrument extends PureComponent {
           extra={
             <div>
               <Button onClick={() => this.handleRefresh()}>刷新</Button>
-              {currentUser.identity === '2' || currentUser.identity === '3' ? (
+              {(currentUser.identity === '2' || currentUser.identity === '3') && (
                 <Button type="primary" style={{ marginLeft: 10 }} onClick={() => this.handleAdd()}>
                   新增
                 </Button>
-              ) : (
-                ''
               )}
             </div>
           }

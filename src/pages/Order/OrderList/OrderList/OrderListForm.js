@@ -158,62 +158,60 @@ export default class OrderListForm extends Component {
           width={700}
         >
           <Form style={{ marginTop: 8 }}>
-            {listFormData.record.itemsId
-              ? listFormData.record.itemsId.chemicals.map((value, index) => {
-                  return (
-                    <span>
-                      {index === 0 ? <Divider orientation="left">所借药品信息</Divider> : null}
-                      <Row>
-                        <Col md={12} sm={24}>
-                          <FormItem {...formItemLayout} label="药品名称">
-                            {chemicalSd[value]}
-                          </FormItem>
-                        </Col>
-                        <Col md={12} sm={24}>
-                          <FormItem {...formItemLayout} label="入库数量">
-                            {getFieldDecorator(`chemicalsNum[${index}]`, {
-                              rules: [
-                                {
-                                  required: true,
-                                  message: '请输入入库数量',
-                                },
-                              ],
-                            })(<InputNumber placeholder="请输入" />)}
-                          </FormItem>
-                        </Col>
-                      </Row>
-                    </span>
-                  );
-                })
-              : null}
-            {listFormData.record.itemsId
-              ? listFormData.record.itemsId.instrument.map((value, index) => {
-                  return (
-                    <span>
-                      {index === 0 ? <Divider orientation="left">所借仪器信息</Divider> : null}
-                      <Row>
-                        <Col md={12} sm={24}>
-                          <FormItem {...formItemLayout} label="仪器名称">
-                            {instrumentSd[value]}
-                          </FormItem>
-                        </Col>
-                        <Col md={12} sm={24}>
-                          <FormItem {...formItemLayout} label="入库数量">
-                            {getFieldDecorator(`instrumentNum[${index}]`, {
-                              rules: [
-                                {
-                                  required: true,
-                                  message: '请输入入库数量',
-                                },
-                              ],
-                            })(<InputNumber placeholder="请输入" />)}
-                          </FormItem>
-                        </Col>
-                      </Row>
-                    </span>
-                  );
-                })
-              : null}
+            {listFormData.record.itemsId &&
+              listFormData.record.itemsId.chemicals.map((value, index) => {
+                return (
+                  <span>
+                    {index === 0 && <Divider orientation="left">所借药品信息</Divider>}
+                    <Row>
+                      <Col md={12} sm={24}>
+                        <FormItem {...formItemLayout} label="药品名称">
+                          {chemicalSd[value]}
+                        </FormItem>
+                      </Col>
+                      <Col md={12} sm={24}>
+                        <FormItem {...formItemLayout} label="入库数量">
+                          {getFieldDecorator(`chemicalsNum[${index}]`, {
+                            rules: [
+                              {
+                                required: true,
+                                message: '请输入入库数量',
+                              },
+                            ],
+                          })(<InputNumber placeholder="请输入" />)}
+                        </FormItem>
+                      </Col>
+                    </Row>
+                  </span>
+                );
+              })}
+            {listFormData.record.itemsId &&
+              listFormData.record.itemsId.instrument.map((value, index) => {
+                return (
+                  <span>
+                    {index === 0 && <Divider orientation="left">所借仪器信息</Divider>}
+                    <Row>
+                      <Col md={12} sm={24}>
+                        <FormItem {...formItemLayout} label="仪器名称">
+                          {instrumentSd[value]}
+                        </FormItem>
+                      </Col>
+                      <Col md={12} sm={24}>
+                        <FormItem {...formItemLayout} label="入库数量">
+                          {getFieldDecorator(`instrumentNum[${index}]`, {
+                            rules: [
+                              {
+                                required: true,
+                                message: '请输入入库数量',
+                              },
+                            ],
+                          })(<InputNumber placeholder="请输入" />)}
+                        </FormItem>
+                      </Col>
+                    </Row>
+                  </span>
+                );
+              })}
             <Divider orientation="left">确认并填写</Divider>
             <Row>
               <Col md={12} sm={24}>
@@ -285,50 +283,48 @@ export default class OrderListForm extends Component {
           width={700}
         >
           <Form>
-            {listFormData.record.itemsId
-              ? listFormData.record.itemsId.chemicals.map((value, index) => {
-                  const orderNum = listFormData.record.itemsNum.chemicals[index];
-                  return (
-                    <span>
-                      {index === 0 ? <Divider orientation="left">所借药品信息</Divider> : null}
-                      <Row>
-                        <Col md={12} sm={24}>
-                          <FormItem {...formItemLayout} label="药品名称">
-                            {chemicalSd[value]}
-                          </FormItem>
-                        </Col>
-                        <Col md={12} sm={24}>
-                          <FormItem {...formItemLayout} label="申请数量">
-                            {orderNum}
-                          </FormItem>
-                        </Col>
-                      </Row>
-                    </span>
-                  );
-                })
-              : null}
-            {listFormData.record.itemsId
-              ? listFormData.record.itemsId.instrument.map((value, index) => {
-                  const orderNum = listFormData.record.itemsNum.instrument[index];
-                  return (
-                    <span>
-                      {index === 0 ? <Divider orientation="left">所借仪器信息</Divider> : null}
-                      <Row>
-                        <Col md={12} sm={24}>
-                          <FormItem {...formItemLayout} label="仪器名称">
-                            {instrumentSd[value]}
-                          </FormItem>
-                        </Col>
-                        <Col md={12} sm={24}>
-                          <FormItem {...formItemLayout} label="申请数量">
-                            {orderNum}
-                          </FormItem>
-                        </Col>
-                      </Row>
-                    </span>
-                  );
-                })
-              : null}
+            {listFormData.record.itemsId &&
+              listFormData.record.itemsId.chemicals.map((value, index) => {
+                const orderNum = listFormData.record.itemsNum.chemicals[index];
+                return (
+                  <span>
+                    {index === 0 && <Divider orientation="left">所借药品信息</Divider>}
+                    <Row>
+                      <Col md={12} sm={24}>
+                        <FormItem {...formItemLayout} label="药品名称">
+                          {chemicalSd[value]}
+                        </FormItem>
+                      </Col>
+                      <Col md={12} sm={24}>
+                        <FormItem {...formItemLayout} label="申请数量">
+                          {orderNum}
+                        </FormItem>
+                      </Col>
+                    </Row>
+                  </span>
+                );
+              })}
+            {listFormData.record.itemsId &&
+              listFormData.record.itemsId.instrument.map((value, index) => {
+                const orderNum = listFormData.record.itemsNum.instrument[index];
+                return (
+                  <span>
+                    {index === 0 && <Divider orientation="left">所借仪器信息</Divider>}
+                    <Row>
+                      <Col md={12} sm={24}>
+                        <FormItem {...formItemLayout} label="仪器名称">
+                          {instrumentSd[value]}
+                        </FormItem>
+                      </Col>
+                      <Col md={12} sm={24}>
+                        <FormItem {...formItemLayout} label="申请数量">
+                          {orderNum}
+                        </FormItem>
+                      </Col>
+                    </Row>
+                  </span>
+                );
+              })}
             <Divider orientation="left">确认并填写</Divider>
             <Row>
               <Col md={12} sm={24}>

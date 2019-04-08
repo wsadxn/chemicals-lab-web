@@ -154,7 +154,7 @@ export default class SelfList extends PureComponent {
                   style={{ fontSize: 20, color: '#108ee9', cursor: 'pointer' }}
                 />
               </Tooltip>
-              {record.state === 0 ? (
+              {record.state === 0 && (
                 <span>
                   <Divider type="vertical" />
                   <Tooltip title="撤销申请">
@@ -170,7 +170,7 @@ export default class SelfList extends PureComponent {
                     </Popconfirm>
                   </Tooltip>
                 </span>
-              ) : null}
+              )}
             </div>
           );
         },

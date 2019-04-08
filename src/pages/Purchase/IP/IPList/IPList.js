@@ -317,32 +317,32 @@ export default class IPList extends PureComponent {
         render: record => (
           <div>
             {optButton.detail(record)}
-            {record.state === 0 && currentUser.identity === '3' ? (
+            {record.state === 0 && currentUser.identity === '3' && (
               <span>
                 {optButton.divider()}
                 {optButton.adopt(record)}
               </span>
-            ) : null}
-            {record.state === 0 && currentUser.id === record.applicantId ? (
+            )}
+            {record.state === 0 && currentUser.id === record.applicantId && (
               <span>
                 {optButton.divider()}
                 {optButton.modify(record)}
                 {optButton.divider()}
                 {optButton.revoke(record)}
               </span>
-            ) : null}
-            {record.state === 1 ? (
+            )}
+            {record.state === 1 && (
               <span>
                 {optButton.divider()}
                 {optButton.storage(record)}
               </span>
-            ) : null}
-            {record.state === 1 && currentUser.identity === '3' ? (
+            )}
+            {record.state === 1 && currentUser.identity === '3' && (
               <span>
                 {optButton.divider()}
                 {optButton.revoke(record)}
               </span>
-            ) : null}
+            )}
           </div>
         ),
       },

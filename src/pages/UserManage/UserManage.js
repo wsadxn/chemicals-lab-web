@@ -37,46 +37,6 @@ export default class UserManage extends PureComponent {
     });
   }
 
-  // 查看
-  handleDetail = record => {
-    Modal.info({
-      width: 600,
-      title: '药品详情',
-      content: (
-        <div>
-          <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-            <Col md={12} sm={24}>
-              <span>名称：{record.name}</span>
-            </Col>
-            <Col md={12} sm={24}>
-              <span>编号：{record.code}</span>
-            </Col>
-          </Row>
-          <Divider style={{ marginTop: 5, marginBottom: 5 }} />
-          <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-            <Col md={12} sm={24}>
-              <span>数量：{record.number + record.unit}</span>
-            </Col>
-            <Col md={12} sm={24}>
-              <span>类别：{type[record.type]}</span>
-            </Col>
-          </Row>
-          <Divider style={{ marginTop: 5, marginBottom: 5 }} />
-          <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-            <Col>
-              <span>
-                操作指南：
-                <br />
-                {record.guild || '暂无'}
-              </span>
-            </Col>
-          </Row>
-        </div>
-      ),
-      okText: '关闭',
-      onOk() {},
-    });
-  };
   // 编辑
   handleEdit = record => {
     this.props.dispatch({
